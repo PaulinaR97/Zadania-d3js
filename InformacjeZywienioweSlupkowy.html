@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head>
+  <title>"Informacje zywieniowe jakie sa najczesciej poszukiwane"</title>
+  
+  
+      <script src="https://d3js.org/d3.v4.js"></script>
+	
+  
+	<style>
+    div.chart {
+        font-family: sans-serif;
+        font-size: 0.7em;
+    }
+
+    div.bar {
+        background-color: darkgreen;
+        color: white;
+        height: 3em;
+        line-height: 3em;
+        padding-right: 1em;
+        margin-bottom: 10px;
+        text-align: right;
+    }
+</style>
+ </head>
+   <body>
+      <script>
+      var json = [
+{ "name": "Inne", "vote": 5 },
+{ "name": "Witaminy", "vote": 30 },
+{ "name": "Suplementy", "vote": 17 },
+{ "name": "Przepisy kulinarne", "vote": 73 },
+{ "name": "Cwiczenia", "vote": 58 },
+{ "name": "Dieta", "vote": 26 },
+{ "name": "Nie szukam", "vote": 10 },
+];
+
+function draw(data) {
+    d3.select("body")
+    .append("div")
+    .attr("class", "chart")
+    .selectAll(".bar")
+    .data(data)
+    .enter()
+    .append("div")
+    .attr("class", "bar")
+    .style("width", function (d) { return d.vote * 10  + "px" })
+    .style("outline", "1px solid black")
+    .text(function (d) { return d.name + ' ' + d.vote  });
+}
+
+draw(json);
+  
+      </script>
+   </body>
+   
+   
+  
+</html>
